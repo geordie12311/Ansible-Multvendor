@@ -1,0 +1,72 @@
+username cisco password 5 cisco123 role network-admin
+username admin_sshkey password 5 !  role network-admin
+
+no ip domain-lookup
+ip domain-name gh-lab.com
+
+crypto key param rsa label S3.gh-lab.com modulus 768 
+
+vlan 1,10-13
+vlan 10
+  name MANAGEMENT
+vlan 11
+  name ENGINEERING
+vlan 12
+  name SALES
+vlan 13
+  name FINANCE
+
+vrf context management
+
+interface Vlan1
+
+interface Vlan10
+  description MANAGEMENT VLAN
+  no shutdown
+  ip address 192.168.10.3/24
+
+interface Vlan11
+  description ENGINEERING VLAN
+  no shutdown
+  ip address 192.168.11.3/24
+
+interface Vlan12
+  description SALES VLAN
+  no shutdown
+  ip address 192.168.12.3/24
+
+interface Vlan13
+  description FINANCE VLAN
+  no shutdown
+  ip address 192.168.13.3/24
+
+interface Ethernet1/1
+  description TO S4 (EOS)
+  switchport mode trunk
+  switchport trunk allowed vlan 1-13
+
+interface Ethernet1/2
+  description TO S2 (IOS)
+  switchport mode trunk
+  switchport trunk allowed vlan 1-13
+
+interface Ethernet1/3
+  description TO NETBOX
+  switchport mode access
+  switchport access vlan 10
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface mgmt0
+  vrf member management
+line console
+line vty
+no logging console

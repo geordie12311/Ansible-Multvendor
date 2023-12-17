@@ -1,0 +1,15 @@
+---
+- name: "Build GH-Labs network in NetBox"
+  hosts: localhost
+
+  tasks:
+  - name: "Iteratively include all task lists"
+    include_tasks: "tasks/{{ taskname }}.yml"
+    loop:
+      - "org"
+      - "device"
+      - "ipam"
+      - "circuit"
+    loop_control:
+      loop_var: "taskname"
+...

@@ -1,0 +1,16 @@
+---
+# Connectivity Variables
+ansible_connection: "ansible.netcommon.network_cli"
+ansible_user: "cisco"
+ansible_password: "cisco123"
+
+# Enabling strict_mode
+strict_mode: true
+
+# Network state variables
+vlans:
+  management: 10
+  engineering: 11
+  sales: 12
+  finance: 13
+...
