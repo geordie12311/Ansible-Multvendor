@@ -1,6 +1,6 @@
 ---
 # Connectivity Variables
-netbox_url: "http://localhost:8000"
+netbox_url: "http://localhost:8001/"
 netbox_token: "8b65587d9d9b70f64d18d463515315da12124b46"
 # Netbox_token = 8b65587d9d9b70f64d18d463515315da12124b46
 # Configuration data:
